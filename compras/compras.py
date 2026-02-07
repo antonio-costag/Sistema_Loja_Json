@@ -1,0 +1,126 @@
+from rich import print
+from rich.panel import Panel
+import os
+import json
+
+#__file__ (Onde eu estou?): uma variável do Python. Ela contém o caminho completo do meu compras.py.
+
+#os.path.dirname(__file__): (Qual é a minha pasta?) A função dirname pega o caminho completo do meu compras.py e retorna apenas a parte da pasta onde ele está localizado.
+
+#'compras.json': (Qual é o nome do arquivo?) É o nome do arquivo JSON onde eu quero armazenar os dados das compras.
+
+#os.path.join(os.path.dirname(__file__), 'compras.json'): (Juntando tudo) A função join pega a pasta onde meu compras.py 
+# está localizado e o nome do arquivo JSON e os junta para criar um caminho completo para o arquivo JSON. 
+# Isso garante que o arquivo JSON seja criado na mesma pasta onde meu compras.py está localizado, independentemente de onde eu execute o código.
+caminho_banco = os.path.join(os.path.dirname(__file__), 'compras.json')
+
+class Compras:
+    """
+    Docstring para Compras
+
+    Essa função vai ser responsavel por efetuar uma compra
+
+    A unica função dessa classe que deve ser usado é "EfetuarCompra"
+    A outras função são apenas para garantir que o "EfetuarCompra" ocorra sem problemas
+
+    o usuario apenas declara ela declarando deus valores e depois chama "EfetuarCompra"
+    """
+    def __init__(self, produto, valor, data):
+        self.id = 0
+        self.produto = produto
+        self.valor = valor
+        self.data = data
+        pass
+
+    def VerificarExistenciaBanco(self):
+        """
+        Docstring para VerificarExistenciaBanco
+        
+        essa função vai criar um novo branco caso ele não exista
+        """
+
+        #vericando se meu banco não existe
+        if not os.path.exists(caminho_banco):
+
+            #se ele não existir, eu crio uma estrutura vazia pra minha lista de compras
+            compras = {
+                'compras':[
+                ]
+            }
+
+            #aqui eu crio um novo aquivo .json e escrevo minha estrutura
+            with open(caminho_banco, 'w', encoding='utf-8') as arquivo:
+                json.dump(compras, arquivo, indent=4, ensure_ascii=False)
+
+        pass
+
+    def AutoIncremetarID(self):
+        """
+        Docstring para AutoIncremetarID
+        
+        Essa função é fundamental para que meu banco não apresente graver problemas
+        ela vai cuidar para criar os id's das minhas compras, assim evitando
+        que aja repetição de id
+        """
+
+        #vou pegar e ler meu banco
+        with open(caminho_banco, 'r', encoding='utf-8') as arquivo:
+            dados = json.load(arquivo)
+
+        #se o que estiver escrito dentro dele for apenas []
+        #significa que ele ta vazio
+        if json.dumps(dados['compras']) == "[]":
+            #assim então, esse é o primeiro item a entrar no banco
+            self.id = 1
+        else:
+            # se não for o primeiro
+            novo_id = 0
+
+            #eu percorro todos os id's so meu banco
+            for id in dados['compras']:
+                novo_id = id['id']
+
+            #pego o ultimo e incremento +1, assim progredindo a ordem
+            self.id = novo_id + 1
+        
+        pass
+
+    def EfetuarCompra(self):
+        """
+        Docstring para EfetuarCompra
+        
+        Essa é a função que vai efetuar a compra e guardar ela no banco
+        """
+        self.VerificarExistenciaBanco()
+        self.AutoIncremetarID()
+
+        #criando uma nova lista
+        nova_compra = {
+            'id': self.id,
+            'produto': self.produto,
+            'valor': self.valor,
+            'data': self.data
+        }
+
+        #aqui eu vou pegar o meu banco (que é uma lista de lista)
+        with open(caminho_banco, 'r', encoding='utf-8') as arquivo:
+            dados = json.load(arquivo)
+
+        #e colocar um novo valor dentro dele (que é uma lista)
+        dados['compras'].append(nova_compra)
+
+        #depois eu reescrevo meu novo branco, com as atualizações feitas
+        with open(caminho_banco, 'w', encoding='utf-8') as arquivo:
+            json.dump(dados, arquivo, indent=4, ensure_ascii=False)
+
+        #assim é printado um painel confirmando que a ação foi bem sucedida
+        caixa = Panel("Compra efetuada com sucesso:+1:", title="Menssagem", style="red", width=33)
+        print(caixa)
+        pass
+
+#testes
+compra1 = Compras("Biscoito", 4.50, "7/2/2026")
+compra1.EfetuarCompra()
+
+compra2 = Compras("Refrigerante", 6.00, "7/2/2026")
+compra2.EfetuarCompra()

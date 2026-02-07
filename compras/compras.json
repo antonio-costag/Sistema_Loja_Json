@@ -1,0 +1,16 @@
+{
+    "compras": [
+        {
+            "id": 1,
+            "produto": "Biscoito",
+            "valor": 4.5,
+            "data": "7/2/2026"
+        },
+        {
+            "id": 2,
+            "produto": "Refrigerante",
+            "valor": 6.0,
+            "data": "7/2/2026"
+        }
+    ]
+}
