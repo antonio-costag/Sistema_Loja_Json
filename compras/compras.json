@@ -3,14 +3,14 @@
         {
             "id": 1,
             "produto": "Biscoito",
-            "valor": 4.5,
+            "valor": 10.0,
             "data": "7/2/2026"
         },
         {
             "id": 2,
-            "produto": "Refrigerante",
-            "valor": 6.0,
-            "data": "7/2/2026"
+            "produto": "Coco",
+            "valor": 7.8,
+            "data": "8/2/2026"
         }
     ]
 }

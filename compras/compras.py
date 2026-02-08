@@ -26,13 +26,13 @@ class Compras:
     o usuario apenas declara ela declarando deus valores e depois chama "EfetuarCompra"
     """
     def __init__(self, produto, valor, data):
-        self.id = 0
-        self.produto = produto
-        self.valor = valor
-        self.data = data
+        self.__id = 0
+        self.__produto = produto
+        self.__valor = valor
+        self.__data = data
         pass
 
-    def VerificarExistenciaBanco(self):
+    def __VerificarExistenciaBanco(self):
         """
         Docstring para VerificarExistenciaBanco
         
@@ -54,7 +54,7 @@ class Compras:
 
         pass
 
-    def AutoIncremetarID(self):
+    def __AutoIncremetarID(self):
         """
         Docstring para AutoIncremetarID
         
@@ -71,7 +71,7 @@ class Compras:
         #significa que ele ta vazio
         if json.dumps(dados['compras']) == "[]":
             #assim então, esse é o primeiro item a entrar no banco
-            self.id = 1
+            self.__id = 1
         else:
             # se não for o primeiro
             novo_id = 0
@@ -81,7 +81,7 @@ class Compras:
                 novo_id = id['id']
 
             #pego o ultimo e incremento +1, assim progredindo a ordem
-            self.id = novo_id + 1
+            self.__id = novo_id + 1
         
         pass
 
@@ -91,15 +91,15 @@ class Compras:
         
         Essa é a função que vai efetuar a compra e guardar ela no banco
         """
-        self.VerificarExistenciaBanco()
-        self.AutoIncremetarID()
+        self.__VerificarExistenciaBanco()
+        self.__AutoIncremetarID()
 
         #criando uma nova lista
         nova_compra = {
-            'id': self.id,
-            'produto': self.produto,
-            'valor': self.valor,
-            'data': self.data
+            'id': self.__id,
+            'produto': self.__produto,
+            'valor': self.__valor,
+            'data': self.__data
         }
 
         #aqui eu vou pegar o meu banco (que é uma lista de lista)
@@ -118,9 +118,8 @@ class Compras:
         print(caixa)
         pass
 
-#testes
-compra1 = Compras("Biscoito", 4.50, "7/2/2026")
+compra1 = Compras("Biscoito", 10.00, "7/2/2026")
 compra1.EfetuarCompra()
 
-compra2 = Compras("Refrigerante", 6.00, "7/2/2026")
+compra2 = Compras("Coco", 7.80, "8/2/2026")
 compra2.EfetuarCompra()
