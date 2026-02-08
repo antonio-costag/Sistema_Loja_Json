@@ -26,13 +26,13 @@ class Compras:
     o usuario apenas declara ela declarando deus valores e depois chama "EfetuarCompra"
     """
     def __init__(self, produto, valor, data):
-        self.__id = 0
-        self.__produto = produto
-        self.__valor = valor
-        self.__data = data
+        self._id = 0
+        self._produto = produto
+        self._valor = valor
+        self._data = data
         pass
 
-    def __VerificarExistenciaBanco(self):
+    def _VerificarExistenciaBanco(self):
         """
         Docstring para VerificarExistenciaBanco
         
@@ -54,7 +54,7 @@ class Compras:
 
         pass
 
-    def __AutoIncremetarID(self):
+    def _AutoIncremetarID(self):
         """
         Docstring para AutoIncremetarID
         
@@ -71,7 +71,7 @@ class Compras:
         #significa que ele ta vazio
         if json.dumps(dados['compras']) == "[]":
             #assim então, esse é o primeiro item a entrar no banco
-            self.__id = 1
+            self._id = 1
         else:
             # se não for o primeiro
             novo_id = 0
@@ -81,7 +81,7 @@ class Compras:
                 novo_id = id['id']
 
             #pego o ultimo e incremento +1, assim progredindo a ordem
-            self.__id = novo_id + 1
+            self._id = novo_id + 1
         
         pass
 
@@ -91,15 +91,15 @@ class Compras:
         
         Essa é a função que vai efetuar a compra e guardar ela no banco
         """
-        self.__VerificarExistenciaBanco()
-        self.__AutoIncremetarID()
+        self._VerificarExistenciaBanco()
+        self._AutoIncremetarID()
 
         #criando uma nova lista
         nova_compra = {
-            'id': self.__id,
-            'produto': self.__produto,
-            'valor': self.__valor,
-            'data': self.__data
+            'id': self._id,
+            'produto': self._produto,
+            'valor': self._valor,
+            'data': self._data
         }
 
         #aqui eu vou pegar o meu banco (que é uma lista de lista)
