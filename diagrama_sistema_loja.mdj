@@ -60,13 +60,13 @@
 												"$ref": "AAAAAAGcO3HRePA6wzI="
 											},
 											"fillColor": "#FFD6AD",
-											"font": "Arial;13;3",
+											"font": "Arial;13;1",
 											"parentStyle": true,
 											"left": 581,
 											"top": 359,
 											"width": 167,
 											"height": 13,
-											"text": "Banco"
+											"text": "GerenteBanco"
 										},
 										{
 											"_type": "LabelView",
@@ -2321,7 +2321,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGcO3HBpfAyGO4="
 					},
-					"name": "Banco",
+					"name": "GerenteBanco",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -2389,8 +2389,7 @@
 							},
 							"name": "BuscarProduto"
 						}
-					],
-					"isAbstract": true
+					]
 				},
 				{
 					"_type": "UMLClass",
@@ -2595,7 +2594,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGcPZkgT9yJyHk="
 							},
-							"name": "valor_total"
+							"name": "valor_total",
+							"type": ""
 						}
 					],
 					"operations": [
