@@ -6,13 +6,12 @@ import json
 #__file__ (Onde eu estou?): uma variável do Python. Ela contém o caminho completo do meu compras.py.
 
 #os.path.dirname(__file__): (Qual é a minha pasta?) A função dirname pega o caminho completo do meu compras.py e retorna apenas a parte da pasta onde ele está localizado.
+#os.path.dirname(os.path.dirname(__file__)) faz a mesma coisa, so que com a pasta que ta guardando o compras.py
 
 #'compras.json': (Qual é o nome do arquivo?) É o nome do arquivo JSON onde eu quero armazenar os dados das compras.
 
-#os.path.join(os.path.dirname(__file__), 'compras.json'): (Juntando tudo) A função join pega a pasta onde meu compras.py 
-# está localizado e o nome do arquivo JSON e os junta para criar um caminho completo para o arquivo JSON. 
-# Isso garante que o arquivo JSON seja criado na mesma pasta onde meu compras.py está localizado, independentemente de onde eu execute o código.
-caminho_banco = os.path.join(os.path.dirname(__file__), 'compras.json')
+
+caminho_banco = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'banco de dados', 'compras.json')
 
 class Compras:
     """
@@ -39,12 +38,19 @@ class Compras:
         essa função vai criar um novo branco caso ele não exista
         """
 
+
+        #aqui eu volto um nivel, sainda de "compras.json" e indo pra "banco de dados"
+        pasta_banco = os.path.dirname(caminho_banco)
+
+        #se ela não exister, eu crio uma nova
+        os.makedirs(pasta_banco, exist_ok=True)
+
         #vericando se meu banco não existe
         if not os.path.exists(caminho_banco):
 
             #se ele não existir, eu crio uma estrutura vazia pra minha lista de compras
             compras = {
-                'compras':[
+                'compras':[ 
                 ]
             }
 
