@@ -1,5 +1,6 @@
 from rich import print
 from rich.panel import Panel
+from produtos import Produto
 import os
 import json
 
@@ -10,10 +11,9 @@ import json
 
 #'compras.json': (Qual é o nome do arquivo?) É o nome do arquivo JSON onde eu quero armazenar os dados das compras.
 
+caminho_banco = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'banco de dados', 'produtos.json')
 
-caminho_banco = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'banco de dados', 'compras.json')
-
-class Compras:
+class GerenteBanco:
     """
     Docstring para Compras
 
@@ -24,14 +24,12 @@ class Compras:
 
     o usuario apenas declara ela declarando deus valores e depois chama "EfetuarCompra"
     """
-    def __init__(self, produto, valor, data):
-        self._id = 0
-        self._produto = produto
-        self._valor = valor
-        self._data = data
+    
+    def __init__(self):
+        self.produto = Produto("", 0, "")
         pass
 
-    def _VerificarExistenciaBanco(self):
+    def _VerificarExistenciaBanco(self, tabela):
         """
         Docstring para VerificarExistenciaBanco
         
@@ -50,7 +48,7 @@ class Compras:
 
             #se ele não existir, eu crio uma estrutura vazia pra minha lista de compras
             compras = {
-                'compras':[ 
+                tabela:[ 
                 ]
             }
 
@@ -60,7 +58,7 @@ class Compras:
 
         pass
 
-    def _AutoIncremetarID(self):
+    def _AutoIncremetarID(self, tabela, id_tabela):
         """
         Docstring para AutoIncremetarID
         
@@ -75,37 +73,40 @@ class Compras:
 
         #se o que estiver escrito dentro dele for apenas []
         #significa que ele ta vazio
-        if json.dumps(dados['compras']) == "[]":
-            #assim então, esse é o primeiro item a entrar no banco
-            self._id = 1
+        if json.dumps(dados[tabela]) == "[]":
+            if tabela == 'produtos':
+                #assim então, esse é o primeiro item a entrar no banco
+                self.produto.id_produto = 1
+
         else:
             # se não for o primeiro
             novo_id = 0
 
             #eu percorro todos os id's so meu banco
-            for id in dados['compras']:
-                novo_id = id['id']
+            for id in dados[tabela]:
+                novo_id = id[id_tabela]
 
-            #pego o ultimo e incremento +1, assim progredindo a ordem
-            self._id = novo_id + 1
+            if tabela == 'produtos':
+                #pego o ultimo e incremento +1, assim progredindo a ordem
+                self.produto.id_produto = novo_id + 1
         
         pass
 
-    def EfetuarCompra(self):
+    def CadastrarProduto(self):
         """
         Docstring para EfetuarCompra
         
         Essa é a função que vai efetuar a compra e guardar ela no banco
         """
-        self._VerificarExistenciaBanco()
-        self._AutoIncremetarID()
+        self._VerificarExistenciaBanco('produtos')
+        self._AutoIncremetarID('produtos', 'id_produto')
 
         #criando uma nova lista
-        nova_compra = {
-            'id': self._id,
-            'produto': self._produto,
-            'valor': self._valor,
-            'data': self._data
+        novo_produto = {
+            'id_produto': self.produto.id_produto,
+            'nome': self.produto.nome,
+            'valor': self.produto.valor,
+            'data': self.produto.categoria
         }
 
         #aqui eu vou pegar o meu banco (que é uma lista de lista)
@@ -113,7 +114,7 @@ class Compras:
             dados = json.load(arquivo)
 
         #e colocar um novo valor dentro dele (que é uma lista)
-        dados['compras'].append(nova_compra)
+        dados['produtos'].append(novo_produto)
 
         #depois eu reescrevo meu novo branco, com as atualizações feitas
         with open(caminho_banco, 'w', encoding='utf-8') as arquivo:
@@ -123,9 +124,3 @@ class Compras:
         caixa = Panel("Compra efetuada com sucesso:+1:", title="Menssagem", style="red", width=33)
         print(caixa)
         pass
-
-compra1 = Compras("Biscoito", 10.00, "7/2/2026")
-compra1.EfetuarCompra()
-
-compra2 = Compras("Coco", 7.80, "8/2/2026")
-compra2.EfetuarCompra()

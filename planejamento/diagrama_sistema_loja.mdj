@@ -146,7 +146,7 @@
 											"top": 382,
 											"width": 167,
 											"height": 13,
-											"text": "+produto: Produtos",
+											"text": "+produto: Produto",
 											"horizontalAlignment": 0
 										},
 										{
@@ -165,7 +165,7 @@
 											"top": 397,
 											"width": 167,
 											"height": 13,
-											"text": "+vendas: Vendas",
+											"text": "+vendas: Venda",
 											"horizontalAlignment": 0
 										}
 									],
@@ -399,7 +399,7 @@
 											"top": 135,
 											"width": 167,
 											"height": 13,
-											"text": "Produtos"
+											"text": "Produto"
 										},
 										{
 											"_type": "LabelView",
@@ -498,7 +498,7 @@
 											"top": 173,
 											"width": 167,
 											"height": 13,
-											"text": "+produto: string",
+											"text": "+nome: string",
 											"horizontalAlignment": 0
 										},
 										{
@@ -673,7 +673,7 @@
 											"top": 359,
 											"width": 167,
 											"height": 13,
-											"text": "Vendas"
+											"text": "Venda"
 										},
 										{
 											"_type": "LabelView",
@@ -2397,7 +2397,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGcO3HBpfAyGO4="
 					},
-					"name": "Produtos",
+					"name": "Produto",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -2472,7 +2472,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGcPYq5Q9v1EAI="
 							},
-							"name": "produto",
+							"name": "nome",
 							"type": "string"
 						},
 						{
@@ -2501,7 +2501,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGcO3HBpfAyGO4="
 					},
-					"name": "Vendas",
+					"name": "Venda",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",

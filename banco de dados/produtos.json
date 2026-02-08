@@ -1,0 +1,28 @@
+{
+    "produtos": [
+        {
+            "id_produto": 1,
+            "nome": "coca cola",
+            "valor": 10.5,
+            "data": "refrigerante"
+        },
+        {
+            "id_produto": 2,
+            "nome": "puddim",
+            "valor": 6.0,
+            "data": "bolo"
+        },
+        {
+            "id_produto": 3,
+            "nome": "coca cola",
+            "valor": 10.5,
+            "data": "refrigerante"
+        },
+        {
+            "id_produto": 4,
+            "nome": "puddim",
+            "valor": 6.0,
+            "data": "bolo"
+        }
+    ]
+}
