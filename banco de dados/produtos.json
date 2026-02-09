@@ -55,6 +55,13 @@
             "valor": 6.0,
             "categoria": "bolo",
             "estoque": 8
+        },
+        {
+            "id_produto": 9,
+            "nome": "fanta",
+            "valor": 12.0,
+            "categoria": "refrigerante",
+            "estoque": 40
         }
     ]
 }
