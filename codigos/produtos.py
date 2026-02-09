@@ -1,7 +1,8 @@
 class Produto:
-    def __init__(self, produto, valor, categoria):
+    def __init__(self, produto, valor, categoria, estoque):
         self.id_produto = 0
         self.nome = produto
         self.valor = valor
         self.categoria = categoria
+        self.estoque = estoque
         pass

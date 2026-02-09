@@ -1,6 +1,7 @@
 from rich import print
 from rich.panel import Panel
 from produtos import Produto
+from rich.text import Text
 import os
 import json
 
@@ -26,7 +27,7 @@ class GerenteBanco:
     """
     
     def __init__(self):
-        self.produto = Produto("", 0, "")
+        self.produto = Produto("", 0, "", 0)
 
         pass
 
@@ -93,6 +94,40 @@ class GerenteBanco:
         
         pass
 
+    def AtualizarEstoqueProduto(self):
+        """
+        Docstring para AtualizarEstoqueProduto
+
+        função que previni o cadastro de um produto que ja existe no banco
+        previnindo a duplicidade de informação
+
+        ela so atualiza o estoque se o produto ja existe, (provavelmente vai passar por alterações)
+        """
+        with open(caminho_banco, 'r', encoding='utf-8') as arquivo:
+            dados = json.load(arquivo)
+
+        #percorrendo todos os valores da minha lista
+        for produto in dados['produtos']:
+
+            #seu eu ja achar o produto que eu quero cadastrar
+            if self.produto.nome == produto['nome']:
+
+                #então eu so atualizo meu estoque
+                produto['estoque'] += self.produto.estoque
+
+                # e reescrevo o banco novamente
+                with open(caminho_banco, 'w', encoding='utf-8') as arquivo:
+                    json.dump(dados, arquivo, indent=4, ensure_ascii=False)
+
+                os.system('clear')
+                
+                texto = Text.from_markup("Produto ja está de estoque, estoque atualizado:flushed:", justify='center')
+                panel = Panel(texto, title="Menssagem", style="yellow", width=34)
+                print(panel)
+
+                #se retornar true, ele incerra a operação de cadastro, pq não vai ser necessario
+                return True
+
     def CadastrarProduto(self):
         """
         Docstring para EfetuarCompra
@@ -102,12 +137,16 @@ class GerenteBanco:
         self._VerificarExistenciaBanco('produtos')
         self._AutoIncremetarID('produtos', 'id_produto')
 
+        if self.AtualizarEstoqueProduto():
+            return
+
         #criando uma nova lista
         novo_produto = {
             'id_produto': self.produto.id_produto,
             'nome': self.produto.nome,
             'valor': self.produto.valor,
-            'categoria': self.produto.categoria
+            'categoria': self.produto.categoria,
+            'estoque': self.produto.estoque
         }
 
         #aqui eu vou pegar o meu banco (que é uma lista de lista)
@@ -121,10 +160,11 @@ class GerenteBanco:
         with open(caminho_banco, 'w', encoding='utf-8') as arquivo:
             json.dump(dados, arquivo, indent=4, ensure_ascii=False)
 
+        os.system('clear')
         #assim é printado um painel confirmando que a ação foi bem sucedida
-        caixa = Panel("Cadastro efetudo com sucesso:grin:", title="Menssagem", style="green", width=34)
-        print(caixa)
-
+        texto = Text.from_markup("Cadastro efetudo com sucesso:grin:", justify='center')
+        panel = Panel(texto, title="Menssagem", style="green", width=34)
+        print(panel)
         pass
 
     def BuscarProduto(self, tabela, nome_busca):
@@ -144,7 +184,7 @@ class GerenteBanco:
         for produto in dados['produtos']:
 
             #caso eu queira buscar todas as tabelas do meu banco
-            if tabela == "todas":
+            if tabela == "todos":
                 print(produto)
                 achou_produto = True
             else:
@@ -160,7 +200,9 @@ class GerenteBanco:
 
         #mensagem de erro caso o produto que eu queira achar não estiver disponivel no meu banco
         if not achou_produto:
-            caixa = Panel("Produto fora de estoque:sweat:", title="Menssagem", style="red", width=29)
-            print(caixa)
-
+            os.system('clear')
+        
+            texto = Text.from_markup("Produto fora de estoque:sweat:", justify='center')
+            panel = Panel(texto, title="Menssagem", style="red", width=34)
+            print(panel)
         pass

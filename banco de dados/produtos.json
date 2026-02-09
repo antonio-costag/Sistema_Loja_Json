@@ -4,37 +4,57 @@
             "id_produto": 1,
             "nome": "coca cola",
             "valor": 10.5,
-            "categoria": "refrigerante"
+            "categoria": "refrigerante",
+            "estoque": 70
         },
         {
             "id_produto": 2,
             "nome": "puddim",
             "valor": 6.0,
-            "categoria": "bolo"
+            "categoria": "bolo",
+            "estoque": 10
         },
         {
             "id_produto": 3,
             "nome": "queijo",
             "valor": 5.76,
-            "categoria": "laticínos"
+            "categoria": "laticínos",
+            "estoque": 23
         },
         {
             "id_produto": 4,
             "nome": "baré",
             "valor": 5.76,
-            "categoria": "refrigerante"
+            "categoria": "refrigerante",
+            "estoque": 67
         },
         {
             "id_produto": 5,
             "nome": "aguá",
             "valor": 3.0,
-            "categoria": "bebida"
+            "categoria": "bebida",
+            "estoque": 200
         },
         {
             "id_produto": 6,
             "nome": "soda",
             "valor": 3.0,
-            "categoria": "refrigerante"
+            "categoria": "refrigerante",
+            "estoque": 37
+        },
+        {
+            "id_produto": 7,
+            "nome": "recheadinho",
+            "valor": 4.0,
+            "categoria": "biscoito",
+            "estoque": 6000
+        },
+        {
+            "id_produto": 8,
+            "nome": "bolo puddim",
+            "valor": 6.0,
+            "categoria": "bolo",
+            "estoque": 8
         }
     ]
 }
