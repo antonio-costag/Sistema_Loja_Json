@@ -27,6 +27,7 @@ class GerenteBanco:
     
     def __init__(self):
         self.produto = Produto("", 0, "")
+
         pass
 
     def _VerificarExistenciaBanco(self, tabela):
@@ -106,7 +107,7 @@ class GerenteBanco:
             'id_produto': self.produto.id_produto,
             'nome': self.produto.nome,
             'valor': self.produto.valor,
-            'data': self.produto.categoria
+            'categoria': self.produto.categoria
         }
 
         #aqui eu vou pegar o meu banco (que é uma lista de lista)
@@ -121,6 +122,45 @@ class GerenteBanco:
             json.dump(dados, arquivo, indent=4, ensure_ascii=False)
 
         #assim é printado um painel confirmando que a ação foi bem sucedida
-        caixa = Panel("Compra efetuada com sucesso:+1:", title="Menssagem", style="red", width=33)
+        caixa = Panel("Cadastro efetudo com sucesso:grin:", title="Menssagem", style="green", width=34)
         print(caixa)
+
+        pass
+
+    def BuscarProduto(self, tabela, nome_busca):
+        """
+        Docstring para BuscarProduto
+
+        Função destinada a encontrar os produtos no banco de dados
+        
+        :param tabela: a tipo de informação que o usuario deseja usar pra realizar uma busca
+        :param produto_busca: O nome da informaçõa que o usuario deseja usar para achar o item 
+        """
+        achou_produto = False
+
+        with open(caminho_banco, 'r', encoding='utf-8') as arquivo:
+            dados = json.load(arquivo)
+        
+        for produto in dados['produtos']:
+
+            #caso eu queira buscar todas as tabelas do meu banco
+            if tabela == "todas":
+                print(produto)
+                achou_produto = True
+            else:
+                #aqui eu faço uma verificação pra saber se o item da minha tabela é um numero
+                if isinstance(produto[tabela], (int, float)):
+                    #se for qualquer tipo de numero eu converto pra float mesmo, pq linguagem faz conversão implicita e não atrapla na comparação com inteiro
+                    nome_busca = float(nome_busca)
+
+                    #aqui eu vou exibir apenas as informações que contem o que eu busco
+                if  nome_busca == produto[tabela]:
+                    print(produto)
+                    achou_produto = True
+
+        #mensagem de erro caso o produto que eu queira achar não estiver disponivel no meu banco
+        if not achou_produto:
+            caixa = Panel("Produto fora de estoque:sweat:", title="Menssagem", style="red", width=29)
+            print(caixa)
+
         pass

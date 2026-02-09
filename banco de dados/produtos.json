@@ -4,25 +4,37 @@
             "id_produto": 1,
             "nome": "coca cola",
             "valor": 10.5,
-            "data": "refrigerante"
+            "categoria": "refrigerante"
         },
         {
             "id_produto": 2,
             "nome": "puddim",
             "valor": 6.0,
-            "data": "bolo"
+            "categoria": "bolo"
         },
         {
             "id_produto": 3,
-            "nome": "coca cola",
-            "valor": 10.5,
-            "data": "refrigerante"
+            "nome": "queijo",
+            "valor": 5.76,
+            "categoria": "laticínos"
         },
         {
             "id_produto": 4,
-            "nome": "puddim",
-            "valor": 6.0,
-            "data": "bolo"
+            "nome": "baré",
+            "valor": 5.76,
+            "categoria": "refrigerante"
+        },
+        {
+            "id_produto": 5,
+            "nome": "aguá",
+            "valor": 3.0,
+            "categoria": "bebida"
+        },
+        {
+            "id_produto": 6,
+            "nome": "soda",
+            "valor": 3.0,
+            "categoria": "refrigerante"
         }
     ]
 }
