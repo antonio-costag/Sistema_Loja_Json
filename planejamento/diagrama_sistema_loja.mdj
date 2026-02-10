@@ -814,8 +814,8 @@
 									"fillColor": "#ADC8FF",
 									"font": "Arial;13;0",
 									"parentStyle": true,
-									"left": -400,
-									"top": 96,
+									"left": -576,
+									"top": -168,
 									"width": 10,
 									"height": 10
 								},
@@ -832,8 +832,8 @@
 									"fillColor": "#ADC8FF",
 									"font": "Arial;13;0",
 									"parentStyle": true,
-									"left": -400,
-									"top": 96,
+									"left": -576,
+									"top": -168,
 									"width": 10,
 									"height": 10
 								}
@@ -1046,7 +1046,7 @@
 											"top": 348,
 											"width": 167,
 											"height": 13,
-											"text": "-RetirarCarrinho()",
+											"text": "-RemoverCarrinho()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3336,7 +3336,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGcPfLV75XiOkw="
 							},
-							"name": "RetirarCarrinho",
+							"name": "RemoverCarrinho",
 							"visibility": "private"
 						}
 					]
