@@ -15,7 +15,7 @@ def TelaInicial():
 
     tabela_desig.add_column("[yellow]Opções[/]", style="blue", width=30)
 
-    tabela_desig.add_row("Cadastrar Produto")
+    tabela_desig.add_row("cadastrar produto")
     tabela_desig.add_row("Buscar Produto")
     tabela_desig.add_row("Sair")
 
@@ -24,11 +24,11 @@ def TelaInicial():
     opcao = input("Escolha uma opção: ")
 
     match opcao:
-        case "Cadastrar Produto":
+        case "cadastrar produto":
             TabelaCadastroProduto()
-        case "Buscar Produto":
+        case "buscar produto":
             TelaBuscaProduto()
-        case "Sair":
+        case "sair":
             os.system('clear')
 
             texto = Text.from_markup("bya:sweat:", justify='center')
