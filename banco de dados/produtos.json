@@ -47,7 +47,7 @@
             "nome": "recheadinho",
             "valor": 4.0,
             "categoria": "biscoito",
-            "estoque": 6000
+            "estoque": 6010
         },
         {
             "id_produto": 8,

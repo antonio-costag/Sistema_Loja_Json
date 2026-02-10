@@ -1,12 +1,12 @@
 from produtos import Produto
-from gerente_banco import GerenteBanco
+from banco_produtos import BancoProdutos
 from rich import print
 from rich.table import Table
 from rich.panel import Panel
 from rich.text import Text
 import os
 
-gb = GerenteBanco()
+gb = BancoProdutos()
 
 def TelaInicial():
     os.system('clear')
@@ -16,7 +16,7 @@ def TelaInicial():
     tabela_desig.add_column("[yellow]Opções[/]", style="blue", width=30)
 
     tabela_desig.add_row("cadastrar produto")
-    tabela_desig.add_row("Buscar Produto")
+    tabela_desig.add_row("buscar produto")
     tabela_desig.add_row("Sair")
 
     print(tabela_desig)
@@ -57,8 +57,8 @@ def TabelaCadastroProduto():
     categoria = input("Digite a categoria do produto: ")
     estoque = int(input("Digite o estoque do produto: "))
 
-    produto1 = Produto(nome, valor, categoria, estoque)
-    gb.produto = produto1
+    produto = Produto(nome, valor, categoria, estoque)
+    gb.produto = produto
     gb.CadastrarProduto()
 
     input("\nPressione Enter para continuar...")
