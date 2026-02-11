@@ -5,7 +5,7 @@
             "nome": "coca cola",
             "valor": 10.5,
             "categoria": "refrigerante",
-            "estoque": 70
+            "estoque": 69
         },
         {
             "id_produto": 2,
@@ -47,7 +47,7 @@
             "nome": "recheadinho",
             "valor": 4.0,
             "categoria": "biscoito",
-            "estoque": 6010
+            "estoque": 5995
         },
         {
             "id_produto": 8,

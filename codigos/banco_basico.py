@@ -1,4 +1,7 @@
 from produtos import Produto
+from rich.text import Text
+from rich.panel import Panel
+from rich import print
 import os
 import json
 

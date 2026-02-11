@@ -110,7 +110,7 @@ def TelaBuscaProduto():
         if tabela != "todos":
             nome_busca = input(f"digite o(a) {tabela} do seu profuto: ")
 
-        gb.BuscarProduto(tabela, nome_busca)
+        gb.BuscarBanco(tabela, nome_busca)
 
         input("\nPressione Enter para continuar...")
         TelaInicial()
@@ -118,4 +118,4 @@ def TelaBuscaProduto():
     pass
 
 
-TelaInicial()
+##TelaInicial()

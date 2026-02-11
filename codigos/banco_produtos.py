@@ -47,9 +47,43 @@ class BancoProdutos(BancoBasico):
         print(panel)
         pass
 
-    def BuscarProduto(self, tabela, nome_busca):
+    def AtualizarEstoqueProduto(self):
         """
-        Docstring para BuscarProduto
+        Docstring para AtualizarEstoqueProduto
+
+        função que previni o cadastro de um produto que ja existe no banco
+        previnindo a duplicidade de informação
+
+        ela so atualiza o estoque se o produto ja existe, (provavelmente vai passar por alterações)
+        """
+        with open(caminho_banco, 'r', encoding='utf-8') as arquivo:
+            dados = json.load(arquivo)
+
+        #percorrendo todos os valores da minha lista
+        for produto in dados['produtos']:
+
+            #seu eu ja achar o produto que eu quero cadastrar
+            if self.produto.nome == produto['nome']:
+
+                #então eu so atualizo meu estoque
+                produto['estoque'] += self.produto.estoque
+
+                # e reescrevo o banco novamente
+                with open(caminho_banco, 'w', encoding='utf-8') as arquivo:
+                    json.dump(dados, arquivo, indent=4, ensure_ascii=False)
+
+                os.system('clear')
+                
+                texto = Text.from_markup("Produto ja está de estoque, estoque atualizado:flushed:", justify='center')
+                panel = Panel(texto, title="Menssagem", style="yellow", width=34)
+                print(panel)
+
+                #se retornar true, ele incerra a operação de cadastro, pq não vai ser necessario
+                return True
+            
+    def BuscarBanco(self, tabela, nome_busca):
+        """
+        Docstring para BuscaProduto
 
         Função destinada a encontrar os produtos no banco de dados
         
@@ -86,37 +120,3 @@ class BancoProdutos(BancoBasico):
             panel = Panel(texto, title="Menssagem", style="red", width=34)
             print(panel)
         pass
-
-    def AtualizarEstoqueProduto(self):
-        """
-        Docstring para AtualizarEstoqueProduto
-
-        função que previni o cadastro de um produto que ja existe no banco
-        previnindo a duplicidade de informação
-
-        ela so atualiza o estoque se o produto ja existe, (provavelmente vai passar por alterações)
-        """
-        with open(caminho_banco, 'r', encoding='utf-8') as arquivo:
-            dados = json.load(arquivo)
-
-        #percorrendo todos os valores da minha lista
-        for produto in dados['produtos']:
-
-            #seu eu ja achar o produto que eu quero cadastrar
-            if self.produto.nome == produto['nome']:
-
-                #então eu so atualizo meu estoque
-                produto['estoque'] += self.produto.estoque
-
-                # e reescrevo o banco novamente
-                with open(caminho_banco, 'w', encoding='utf-8') as arquivo:
-                    json.dump(dados, arquivo, indent=4, ensure_ascii=False)
-
-                os.system('clear')
-                
-                texto = Text.from_markup("Produto ja está de estoque, estoque atualizado:flushed:", justify='center')
-                panel = Panel(texto, title="Menssagem", style="yellow", width=34)
-                print(panel)
-
-                #se retornar true, ele incerra a operação de cadastro, pq não vai ser necessario
-                return True
