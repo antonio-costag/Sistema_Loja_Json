@@ -12,6 +12,7 @@ caminho_banco = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'banco 
 class Carrinho:
     def __init__(self):
         self.id_produto = []
+        self.quantidade = []
         self.valor = 0
         pass
 
@@ -28,6 +29,7 @@ class Carrinho:
         BP.BuscarBanco("todos", 0)
 
         id = int(input("Digite o valor do id para adicionar no carrinho: "))
+        quantidade = int(input("Quantos produtos deseja adicionar no carrinho: "))
 
         with open(caminho_banco, 'r', encoding='utf-8') as arquivo:
             dados = json.load(arquivo)
@@ -41,8 +43,8 @@ class Carrinho:
                 #se eu achar o id e ele estiver em estoque no banco, eu removo e adiciono no carrinho
                 #isso é um problema, pois se houver algum probelama antes de eu finalizar a compra
                 #o produto vai sumir do meu banco, gerando prejuizos
-                if produto['estoque'] > 0:
-                    produto['estoque'] -= 1
+                if produto['estoque'] >= quantidade and produto['estoque'] > 0:
+                    self.quantidade.append(quantidade)
                 else:
 
                     #mensagem de erro caso o produto não estaja em estoque
@@ -89,9 +91,9 @@ class Carrinho:
             #se tivbber eu vou comparando os ids que eu tenho com os do banco
             #se eu tiver um id do banco, eu exibo o produto
             for produto in dados['produtos']:
-                for id in self.id_produto:
+                for indice, id in enumerate(self.id_produto):
                     if id == produto['id_produto']:
-                        print(produto)
+                        print(f"id_produto: {produto["id_produto"]}, nome: {produto["nome"]}, valor: {produto["valor"]}, quantidade carrinho: {self.quantidade[indice]}")
         pass
 
     def RemoverCarrinho(self):
@@ -135,7 +137,9 @@ class Carrinho:
 c = Carrinho()
 
 c.AdicionarCarrinho()
-#print(c.valor)
+for i in range((len(c.id_produto))):
+    print(f"{c.id_produto[i]}, {c.quantidade[i]}")
+    
 
 c.RemoverCarrinho()
 #print(c.valor)

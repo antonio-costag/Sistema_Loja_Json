@@ -68,7 +68,7 @@
             "nome": "ricardo",
             "valor": 0.0,
             "categoria": "pessoa",
-            "estoque": 0
+            "estoque": 1
         }
     ]
 }
