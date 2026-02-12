@@ -34,10 +34,19 @@ class Carrinho:
             json.dump(dados, arquivo, indent=4, ensure_ascii=False)
 
         BP.BuscarBanco("todos", 0)
+        pass
 
+    def ExibirCarrinho(self):
+        if len(self.id_produto) > 0:
+            with open(caminho_banco, 'r', encoding='utf-8') as arquivo:
+                dados = json.load(arquivo)
+            
+            for produto in dados['produto']:
+                if self.id_produto == produto['id_produto']:
+                    print(produto)
+        pass
 
-    def RemoverCarrinho(self, produto: list[Produto]):
-        self.produto.remove[produto]
+    def RemoverCarrinho(self):
         pass
 
 c = Carrinho()
