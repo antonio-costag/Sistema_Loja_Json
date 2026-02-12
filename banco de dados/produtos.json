@@ -47,7 +47,7 @@
             "nome": "recheadinho",
             "valor": 4.0,
             "categoria": "biscoito",
-            "estoque": 5995
+            "estoque": 5992
         },
         {
             "id_produto": 8,
@@ -68,7 +68,7 @@
             "nome": "ricardo",
             "valor": 0.0,
             "categoria": "pessoa",
-            "estoque": 1
+            "estoque": 0
         }
     ]
 }
