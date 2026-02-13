@@ -694,7 +694,7 @@
 											"top": 534,
 											"width": 167,
 											"height": 13,
-											"text": "+carrinho: List<Produtos>",
+											"text": "+carrinho: Carrinho",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3283,7 +3283,9 @@
 								"$ref": "AAAAAAGcPZkgT9yJyHk="
 							},
 							"name": "carrinho",
-							"type": "List<Produtos>"
+							"type": {
+								"$ref": "AAAAAAGcPfLV75XiOkw="
+							}
 						},
 						{
 							"_type": "UMLAttribute",
