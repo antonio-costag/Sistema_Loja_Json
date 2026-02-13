@@ -185,16 +185,3 @@ class Carrinho:
 
         BP.BuscarBanco("todos", 0)
         pass
-
-c = Carrinho()
-
-while True:
-    c.AdicionarCarrinho()
-
-    c.RemoverCarrinho()
-    print("\n")
-
-    c.ExibirCarrinho()
-    print(f"R${c.valor:,.2f}")
-
-    input("\nPressione Enter para continuar...")

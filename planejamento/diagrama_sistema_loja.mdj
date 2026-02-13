@@ -737,12 +737,12 @@
 										},
 										{
 											"_type": "UMLAttributeView",
-											"_id": "AAAAAAGcPgVSDhkAFBA=",
+											"_id": "AAAAAAGcWA/Ysx4dUpw=",
 											"_parent": {
 												"$ref": "AAAAAAGcPZkgT9yRz4s="
 											},
 											"model": {
-												"$ref": "AAAAAAGcPgVSCxj9D6Q="
+												"$ref": "AAAAAAGcWA/Yqx4aROw="
 											},
 											"fillColor": "#ADC8FF",
 											"font": "Arial;13;0",
@@ -751,7 +751,7 @@
 											"top": 579,
 											"width": 167,
 											"height": 13,
-											"text": "+valor_total",
+											"text": "+venda[ ]: list<>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -775,12 +775,12 @@
 									"subViews": [
 										{
 											"_type": "UMLOperationView",
-											"_id": "AAAAAAGcPaE3DN0bHdE=",
+											"_id": "AAAAAAGcV/GwmRnM9Hk=",
 											"_parent": {
 												"$ref": "AAAAAAGcPZkgT9ySqJs="
 											},
 											"model": {
-												"$ref": "AAAAAAGcPaE3B90Yj+4="
+												"$ref": "AAAAAAGcV/GwjxnJ+yY="
 											},
 											"fillColor": "#ADC8FF",
 											"font": "Arial;13;0",
@@ -789,7 +789,7 @@
 											"top": 602,
 											"width": 167,
 											"height": 13,
-											"text": "+SomarValorCompra()",
+											"text": "+EfetuarVenda()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3307,22 +3307,22 @@
 						},
 						{
 							"_type": "UMLAttribute",
-							"_id": "AAAAAAGcPgVSCxj9D6Q=",
+							"_id": "AAAAAAGcWA/Yqx4aROw=",
 							"_parent": {
 								"$ref": "AAAAAAGcPZkgT9yJyHk="
 							},
-							"name": "valor_total",
-							"type": ""
+							"name": "venda[ ]",
+							"type": "list<>"
 						}
 					],
 					"operations": [
 						{
 							"_type": "UMLOperation",
-							"_id": "AAAAAAGcPaE3B90Yj+4=",
+							"_id": "AAAAAAGcV/GwjxnJ+yY=",
 							"_parent": {
 								"$ref": "AAAAAAGcPZkgT9yJyHk="
 							},
-							"name": "SomarValorCompra"
+							"name": "EfetuarVenda"
 						}
 					]
 				},
