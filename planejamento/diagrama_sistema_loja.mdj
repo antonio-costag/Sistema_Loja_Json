@@ -1738,7 +1738,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 16,
-									"top": 88,
+									"top": 80,
 									"width": 10,
 									"height": 10
 								},
@@ -1756,7 +1756,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 16,
-									"top": 88,
+									"top": 80,
 									"width": 10,
 									"height": 10
 								}

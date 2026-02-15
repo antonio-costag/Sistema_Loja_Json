@@ -1,12 +1,10 @@
 from produtos import Produto
-from banco_produtos import BancoProdutos
 from rich import print
 from rich.text import Text
 from rich.panel import Panel
 import os
 import json
 
-BP = BancoProdutos()
 caminho_banco = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'banco de dados', 'produtos.json')
 
 class Carrinho:
@@ -22,6 +20,8 @@ class Carrinho:
         
         Função para adicionar os produtos no carrinho
         """
+        from banco_produtos import BancoProdutos
+        BP = BancoProdutos()
         os.system('clear')
 
         BP.BuscarBanco("todos", 0)
@@ -64,7 +64,16 @@ class Carrinho:
                         self.quantidade.append(quantidade)
                         #ou apenas somar em um produt ja existente
                     else:
-                        self.quantidade[indice_produto] += quantidade
+                        if produto['estoque'] >= (self.quantidade[indice_produto] + quantidade):
+                            self.quantidade[indice_produto] += quantidade
+                        else:
+                            #mensagem de erro caso o produto não estaja em estoque
+                            texto = Text.from_markup("Produto fora de estoque:sweat:", justify='center')
+                            panel = Panel(texto, title="Menssagem", style="red", width=34)
+                            print(panel)
+
+                            input("\nPressione Enter para continuar...")
+                            return
                 else:
 
                     #mensagem de erro caso o produto não estaja em estoque
@@ -179,9 +188,9 @@ class Carrinho:
                     panel = Panel(texto, title="Erro", style="red", width=34)
                     print(panel)
 
-                    input("\nPressione Enter para continuar...")
-
                     self.RemoverCarrinho()
 
+        from banco_produtos import BancoProdutos
+        BP = BancoProdutos()
         BP.BuscarBanco("todos", 0)
         pass

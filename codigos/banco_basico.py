@@ -2,15 +2,6 @@ from produtos import Produto
 import os
 import json
 
-#__file__ (Onde eu estou?): uma variável do Python. Ela contém o caminho completo do meu compras.py.
-
-#os.path.dirname(__file__): (Qual é a minha pasta?) A função dirname pega o caminho completo do meu compras.py e retorna apenas a parte da pasta onde ele está localizado.
-#os.path.dirname(os.path.dirname(__file__)) faz a mesma coisa, so que com a pasta que ta guardando o compras.py
-
-#'compras.json': (Qual é o nome do arquivo?) É o nome do arquivo JSON onde eu quero armazenar os dados das compras.
-
-caminho_banco = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'banco de dados', 'produtos.json')
-
 class BancoBasico:
     """
     Docstring para Compras
@@ -24,11 +15,13 @@ class BancoBasico:
     """
     
     def __init__(self):
+        from vendas import Vendas
         self.produto = Produto("", 0, "", 0)
+        self.vendas = Vendas()
 
         pass
 
-    def _VerificarExistenciaBanco(self, tabela):
+    def _VerificarExistenciaBanco(self, tabela, caminho_banco):
         """
         Docstring para VerificarExistenciaBanco
         
@@ -57,7 +50,7 @@ class BancoBasico:
 
         pass
 
-    def _AutoIncremetarID(self, tabela, id_tabela):
+    def _AutoIncremetarID(self, tabela, id_tabela, caminho_banco):
         """
         Docstring para AutoIncremetarID
         
@@ -76,6 +69,8 @@ class BancoBasico:
             if tabela == 'produtos':
                 #assim então, esse é o primeiro item a entrar no banco
                 self.produto.id_produto = 1
+            else:
+                self.vendas.id_venda = 1
 
         else:
             # se não for o primeiro
@@ -88,5 +83,7 @@ class BancoBasico:
             if tabela == 'produtos':
                 #pego o ultimo e incremento +1, assim progredindo a ordem
                 self.produto.id_produto = novo_id + 1
+            else:
+                self.vendas.id_venda = novo_id + 1
         
         pass

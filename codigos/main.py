@@ -1,5 +1,6 @@
 from produtos import Produto
 from banco_produtos import BancoProdutos
+from banco_vendas import BancoVendas
 from carrinho import Carrinho
 from vendas import Vendas
 from rich import print
@@ -123,18 +124,19 @@ def TelaBuscaProduto():
 #TelaInicial()
 
 carrinho = Carrinho()
+
+banco_vendas = BancoVendas()
+
+carrinho.AdicionarCarrinho()
+carrinho.AdicionarCarrinho()
+carrinho.AdicionarCarrinho()
+
+#venda.carrinho = carrinho
+#venda.EfetuarVenda()
+
 venda = Vendas()
+banco_vendas.vendas = venda
+banco_vendas.vendas.carrinho = carrinho
+banco_vendas.vendas.EfetuarVenda()
 
-carrinho.AdicionarCarrinho()
-carrinho.AdicionarCarrinho()
-carrinho.AdicionarCarrinho()
-
-venda.carrinho = carrinho
-venda.EfetuarVenda()
-
-id = 1
-for i in venda.vendas:
-    i['id_venda'] = id
-
-    print(i)
-    id += 1
+banco_vendas.RegistrarVenda()

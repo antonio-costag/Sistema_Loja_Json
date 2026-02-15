@@ -1,4 +1,3 @@
-from carrinho import Carrinho
 import os
 import json
 
@@ -6,6 +5,7 @@ caminho_banco = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'banco 
 
 class Vendas:
     def __init__(self):
+        from carrinho import Carrinho
         self.carrinho = Carrinho()
         self.id_venda = 0
         self.data = ""
@@ -30,4 +30,9 @@ class Vendas:
                     }
 
                     self.vendas.append(nova_venda)
+
+                    produto['estoque'] -= self.carrinho.quantidade[index]
+
+        with open(caminho_banco, 'w', encoding='utf-8') as arquivo:
+            json.dump(dados, arquivo, indent=4, ensure_ascii=False)
         pass

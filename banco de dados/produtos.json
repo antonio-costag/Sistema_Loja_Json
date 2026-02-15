@@ -5,14 +5,14 @@
             "nome": "coca cola",
             "valor": 10.5,
             "categoria": "refrigerante",
-            "estoque": 69
+            "estoque": 67
         },
         {
             "id_produto": 2,
             "nome": "puddim",
             "valor": 6.0,
             "categoria": "bolo",
-            "estoque": 10
+            "estoque": 9
         },
         {
             "id_produto": 3,
@@ -33,7 +33,7 @@
             "nome": "aguá",
             "valor": 3.0,
             "categoria": "bebida",
-            "estoque": 200
+            "estoque": 198
         },
         {
             "id_produto": 6,
@@ -47,7 +47,7 @@
             "nome": "recheadinho",
             "valor": 4.0,
             "categoria": "biscoito",
-            "estoque": 5992
+            "estoque": 5991
         },
         {
             "id_produto": 8,
@@ -68,7 +68,7 @@
             "nome": "ricardo",
             "valor": 0.0,
             "categoria": "pessoa",
-            "estoque": 1
+            "estoque": 0
         }
     ]
 }

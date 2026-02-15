@@ -5,6 +5,13 @@ from rich.panel import Panel
 import os
 import json
 
+#__file__ (Onde eu estou?): uma variável do Python. Ela contém o caminho completo do meu compras.py.
+
+#os.path.dirname(__file__): (Qual é a minha pasta?) A função dirname pega o caminho completo do meu compras.py e retorna apenas a parte da pasta onde ele está localizado.
+#os.path.dirname(os.path.dirname(__file__)) faz a mesma coisa, so que com a pasta que ta guardando o compras.py
+
+#'compras.json': (Qual é o nome do arquivo?) É o nome do arquivo JSON onde eu quero armazenar os dados das compras.
+
 caminho_banco = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'banco de dados', 'produtos.json')
 
 class BancoProdutos(BancoBasico):
@@ -14,8 +21,8 @@ class BancoProdutos(BancoBasico):
         
         Essa é a função que vai efetuar a compra e guardar ela no banco
         """
-        self._VerificarExistenciaBanco('produtos')
-        self._AutoIncremetarID('produtos', 'id_produto')
+        self._VerificarExistenciaBanco('produtos', caminho_banco)
+        self._AutoIncremetarID('produtos', 'id_produto', caminho_banco)
 
         if self.AtualizarEstoqueProduto():
             return
